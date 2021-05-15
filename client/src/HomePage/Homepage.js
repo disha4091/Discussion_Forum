@@ -1,43 +1,36 @@
 import React from 'react'
-import Carousel from 'react-bootstrap/Carousel' 
+import { Carousel } from 'react-responsive-carousel';
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './HomePage.css'
-import "slick-carousel/slick/slick.css";  
-import "slick-carousel/slick/slick-theme.css";  
 
 import image1 from './Images/img1.PNG'
 import image2 from './Images/img2.PNG'
 import image3 from './Images/img3.PNG'
 
 const HomePage = () => {
-    return (  
+    return ( 
+        <div className="Carousel">
+        <Carousel showArrows={false} showStatus={false} showThumbs={false} autoPlay={true} infiniteLoop={true} interval={3000}>
+        <div className="image">
+            <img src={image1} />
+       </div>
+       <div className="image">
+            <img src={image2} />
+        </div>
+        <div className="image">
+            <img src={image3}/>
+        </div>
+       </Carousel> 
+        </div>
         
-    <div className="body">  
         
-        <div className='container-fluid' >  
+  
         
-             <Carousel style={{ position: 'relative' }} fade={true} >  
-        
-                <Carousel.Item  interval={2000} keyboard={false} pauseOnHover={true}>          
-                    <img align="centre" src={image1} width="1000" height="480" />  
-                </Carousel.Item>  
-        
-                <Carousel.Item   interval={2000} >  
-                    <img  src={image2} width="1000" height="480" />  
-                    <Carousel.Caption>      He                  
-                    </Carousel.Caption>          
-                </Carousel.Item>  
-        
-                <Carousel.Item interval={2000} >     
-                    <img src={image3} width="1000" height="480" />  
-                </Carousel.Item>  
-        
-            </Carousel>  
-        
-        </div>  
-        
-    </div>  
+    
         
 )  
 }
 
-export default HomePage
+export default HomePage 
+
