@@ -28,7 +28,7 @@ module.exports = {
         } 
     },
     Mutation : {
-        async createPost(_, { body }, context) {
+        async createPost(_, { body,category }, context) {
             const user = checkAuth(context);
       
             
@@ -37,6 +37,7 @@ module.exports = {
               body,
               user: user.id,
               username: user.username,
+              category,
               createdAt: new Date().toISOString()
             });
       

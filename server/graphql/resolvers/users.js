@@ -14,7 +14,8 @@ function generateToken(user) {
     {
       id: user.id,
       email: user.email,
-      username: user.username
+      username: user.username,
+      bio: user.bio 
     },
     SECRET_KEY,
     { expiresIn: '1h' }
@@ -54,7 +55,7 @@ module.exports = {
     async register(
       _,
       {
-        registerInput: { username, email, password, confirmPassword }
+        registerInput: { username, email, password, confirmPassword, bio }
       }
     ) {
       // Validate user data
@@ -62,7 +63,8 @@ module.exports = {
         username,
         email,
         password,
-        confirmPassword
+        confirmPassword,
+        bio
       );
       if (!valid) {
         throw new UserInputError('Errors', { errors });
@@ -83,6 +85,7 @@ module.exports = {
         email,
         username,
         password,
+        bio,
         createdAt: new Date().toISOString()
       });
 
