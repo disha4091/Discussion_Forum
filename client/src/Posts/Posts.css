@@ -1,0 +1,8 @@
+.posts {
+  width: 200px;
+  margin: auto;
+  background-color: rgb(240, 252, 246);
+  border: solid black 1px;
+  margin-top: 10px;
+  padding: 10px;
+}
