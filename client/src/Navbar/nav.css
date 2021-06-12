@@ -1,4 +1,4 @@
-.ui.menu{
-    background-color: #1c254b !important;
-    margin-bottom: 10vh ;
+.ui.large.secondary.inverted.pointing.menu{
+    background-color: #1c254b;
+    margin-bottom: 5vh;
 }

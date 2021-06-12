@@ -1,3 +1,6 @@
+.homepage{
+  overflow-x: hidden;
+}
 .image {
   width: 950px;
   height: 500px;
@@ -6,9 +9,25 @@
 .Carousel {
   width: 950px;
   margin: auto;
-  box-shadow: 10px 10px #b1b1b1;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
-.ui.pusher-ele{
-  background-color: #1c254b !important;
+.ui.inverted.vertical.masthead.center.aligned.segment.pusher-ele{
+  background-color: #1c254b;
+  height: 95vh;
+}
+
+@media only screen and (max-width: 600px){
+  .Carousel{
+    width: 300px;
+    height: 100px;
+  }
+  .image{
+    width:300px;
+    height: 175px;
+  }
+  .ui.inverted.vertical.masthead.center.aligned.segment.pusher-ele{
+    background-color: #1c254b;
+    height: 50vh;
+  }
 }
