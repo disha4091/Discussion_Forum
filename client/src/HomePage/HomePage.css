@@ -8,3 +8,7 @@
   margin: auto;
   box-shadow: 10px 10px #b1b1b1;
 }
+
+.ui.pusher-ele{
+  background-color: #1c254b !important;
+}
