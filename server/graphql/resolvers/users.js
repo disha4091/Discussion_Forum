@@ -8,6 +8,7 @@ const {
 } = require('../../util/validators');
 
 const User = require('../../models/User');
+const { update } = require('../../models/User');
 
 function generateToken(user) {
   return jwt.sign(
@@ -40,8 +41,8 @@ module.exports = {
 
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
-        errors.general = 'Wrong credetials';
-        throw new UserInputError('Wrong credetials', { errors });
+        errors.general = 'Wrong credentials';
+        throw new UserInputError('Wrong credentials', { errors });
       }
 
       const token = generateToken(user);
@@ -97,6 +98,20 @@ module.exports = {
         ...res._doc,
         id: res._id,
         token
+      };
+    },
+    async update(_,{username,newBio}){
+      const filter = { username: username };
+      const update = { bio: newBio };
+      let doc = await User.findOneAndUpdate(filter, update);
+      doc.username;
+      doc.bio; // undefined
+
+      doc = await User.findOne(filter);
+      doc.bio; 
+      return {
+        ...doc._doc,
+        id: doc._id,
       };
     }
   }

@@ -9,6 +9,7 @@ import image1 from './Images/img1.PNG'
 import image2 from './Images/img2.PNG'
 import image3 from './Images/img3.PNG'
 import Navbar from '../Navbar/Navbar';
+import Cards from './Cards';
 
 const HomePage = () => {
     return ( 
@@ -31,8 +32,9 @@ const HomePage = () => {
                             </div>
                         </Carousel> 
                     </div>  
+                     <Cards/>
                 </div>
-                
+               
 
             </div>
 
