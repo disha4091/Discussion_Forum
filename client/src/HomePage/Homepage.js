@@ -32,12 +32,12 @@ const HomePage = () => {
                             </div>
                         </Carousel> 
                     </div>  
-                     <Cards/>
+                     
                 </div>
-               
+                
 
             </div>
-
+                <Cards/>
         </div>
        
 )  

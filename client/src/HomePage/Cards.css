@@ -1,0 +1,20 @@
+.CardImg {
+  width: 100%;
+  height: 180px;
+}
+
+.ui.grid.container {
+  margin: 0 auto;
+}
+.four.wide.column {
+  margin: 0 auto;
+  align-content: center;
+}
+
+.heading {
+  font-size: 80px;
+  color: rgb(16, 5, 112);
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
