@@ -42,3 +42,18 @@ module.exports.validateRegisterInput = (
       valid: Object.keys(errors).length < 1
     };
   };
+
+  module.exports.validateUpdateInput = (username, newBio) => {
+    const errors = {};
+    if (username.trim() === '') {
+      errors.username = 'Username must not be empty';
+    }
+    if (newBio.trim() === '') {
+      errors.newBio = 'Bio must not be empty';
+    }
+  
+    return {
+      errors,
+      valid: Object.keys(errors).length < 1
+    };
+  };

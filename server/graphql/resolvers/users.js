@@ -4,7 +4,8 @@ const { UserInputError } = require('apollo-server');
 const { SECRET_KEY } = require('../../config');
 const {
   validateRegisterInput,
-  validateLoginInput
+  validateLoginInput,
+  validateUpdateInput
 } = require('../../util/validators');
 
 const User = require('../../models/User');
@@ -100,15 +101,28 @@ module.exports = {
         token
       };
     },
-    async update(_,{username,newBio}){
+    async updateBio(_,{username,newBio}){
       const filter = { username: username };
       const update = { bio: newBio };
+      const { errors, valid } = validateUpdateInput(username, newBio);
+      const user = await User.findOne(filter);
+      if(errors.username){
+        throw new UserInputError('Username empty', { errors });
+      }
+      if(errors.newBio){
+        throw new UserInputError('Bio empty', { errors });
+      }
+      if (!user) {
+        errors.general = 'User not found';
+        throw new UserInputError('User not found', { errors });
+      }
       let doc = await User.findOneAndUpdate(filter, update);
       doc.username;
       doc.bio; // undefined
 
       doc = await User.findOne(filter);
       doc.bio; 
+     
       return {
         ...doc._doc,
         id: doc._id,
