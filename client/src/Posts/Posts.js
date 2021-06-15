@@ -3,16 +3,17 @@ import { useQuery } from '@apollo/react-hooks' ;
 import gql from 'graphql-tag' ;
 import './Posts.css' ;
 
-export const Home = () => {
+export const Home = ({category}) => {
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
 
    
     return (
         <div>
+            
         {loading ? (
             <h1>Loading Posts ... </h1> 
             ):(
-            posts && posts.filter(post => post.category === "Web development").map((post) => ( 
+            posts && posts.filter(post => post.category === category).map((post) => ( 
                 <div className="posts">
                     <h2>{post.username}</h2>
                     <h5>Category: {post.category}</h5>

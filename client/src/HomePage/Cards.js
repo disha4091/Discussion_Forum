@@ -3,6 +3,7 @@ import ML from './Images/ML.jpg' ;
 import WebDevelopment from './Images/WebDevelopment.png' ;
 import AI from './Images/AI.jpg' ;
 import './Cards.css' ;
+import { Link } from 'react-router-dom';
 const Cards = () => {
     return (
         <div class="ui grid container">
@@ -18,7 +19,10 @@ const Cards = () => {
                     <img src={ML} className="CardImg"/>
 
                     <div class="extra content">
-                        <button class="ui button">Explore</button>
+                        <Link to="/mlposts">
+                            <button class="ui button">Explore</button>
+                        </Link>
+                        
                     </div>
                 </div>
                 </div>
@@ -33,7 +37,9 @@ const Cards = () => {
                     <img src={WebDevelopment} className="CardImg"/>
 
                     <div class="extra content">
-                        <button class="ui button">Explore</button>
+                    <Link to="/webposts">
+                            <button class="ui button">Explore</button>
+                    </Link>
                     </div>
                 </div>
                 </div>
@@ -48,7 +54,9 @@ const Cards = () => {
                             <img src={AI} className="CardImg"/>
                     
                             <div class="extra content">
-                                <button class="ui button">Explore</button>
+                            <Link to="/aiposts">
+                            <button class="ui button">Explore</button>
+                            </Link>
                             </div>
                         </div>
                         </div>

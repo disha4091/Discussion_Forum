@@ -8,13 +8,13 @@ const Navbar = () => {
      <NavLink to="/" className="nav-link" activeClassName="currentpage">
           Home
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/posts"
           className="nav-link"
           activeClassName="currentpage"
         >
           Posts
-        </NavLink>
+        </NavLink> */}
         <div class="right menu">
           <NavLink
             to="/login"
