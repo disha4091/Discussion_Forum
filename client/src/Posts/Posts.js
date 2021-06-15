@@ -12,7 +12,7 @@ export const Home = () => {
         {loading ? (
             <h1>Loading Posts ... </h1> 
             ):(
-            posts && posts.map((post) => ( 
+            posts && posts.filter(post => post.category === "Web development").map((post) => ( 
                 <div className="posts">
                     <h2>{post.username}</h2>
                     <h5>Category: {post.category}</h5>

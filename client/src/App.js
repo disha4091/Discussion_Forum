@@ -8,7 +8,8 @@ function App() {
     
     <div className="App">
       
-      <UpdateProfilePage/>
+      {/* <UpdateProfilePage/> */}
+      <Homepage/>
       
       
     </div>
