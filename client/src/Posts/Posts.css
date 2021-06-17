@@ -23,3 +23,9 @@
   font-size: large;
   font-weight: bold;
 }
+.title {
+  color: #fdcf60;
+  text-align: center;
+  font-size: 7vh;
+  font-family: "Cabin", sans-serif;
+}

@@ -1,26 +1,30 @@
 import React from "react";
 import "./nav.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="nav">
     <div class="ui large secondary inverted pointing menu ">
-     <NavLink to="/" className="nav-link" activeClassName="currentpage">
-          Home
-        </NavLink>
-        {/* <NavLink
-          to="/posts"
-          className="nav-link"
-          activeClassName="currentpage"
+      <NavLink to="/" className="nav-link" activeClassName="currentpage">
+         Home
+      </NavLink>
+      
+      <div class="ui simple dropdown item">
+        Dropdown
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <Link to="/mlposts" class="item">Machine Learning</Link>
+            <Link to="/webposts" class="item">Web Development</Link>          
+            <Link to="/aiposts" class="item">Artificial Intelligence</Link>
+        </div>
+      </div>
+
+      <div class="right menu">
+        <NavLink
+        to="/login"
+        className="nav-link"
+        activeClassName="currentpage"
         >
-          Posts
-        </NavLink> */}
-        <div class="right menu">
-          <NavLink
-            to="/login"
-            className="nav-link"
-            activeClassName="currentpage"
-          >
             Login
           </NavLink>
           <NavLink

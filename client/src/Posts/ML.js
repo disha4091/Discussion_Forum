@@ -1,8 +1,14 @@
 import React from "react";
 import Posts from './Posts';
+import './Posts.css' ;
+
 const ML = () => {
     return (
-        <Posts category="ML" />
+        <div className="ml-posts">
+            <h2 className="title">Machine Learning</h2>
+            <Posts category="ML" />
+        </div>
+        
     );
 }
  

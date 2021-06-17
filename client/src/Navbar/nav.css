@@ -1,11 +1,12 @@
-.ui.large.secondary.inverted.pointing.menu{
-    background-color: #1c254b;
-    margin-bottom: 5vh;
+.ui.large.secondary.inverted.pointing.menu {
+  background-color: #1c254b;
+  margin-bottom: 5vh;
 }
-.nav{
-    height:10vh;
+
+.nav {
+  height: 10vh;
 }
-.nav-link{
-    margin:1em 2em ;
-    color:aliceblue;
+.nav-link {
+  margin: 1em 2em;
+  color: aliceblue;
 }

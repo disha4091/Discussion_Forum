@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from '@apollo/react-hooks' ;
 import gql from 'graphql-tag' ;
 import './Posts.css' ;
 import moment from 'moment' ;
+
 export const Home = ({category}) => {
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
+    const [showComments, setShowComments] = useState(false);
+    function CommentHandler(){
+        if(showComments == false){
+            setShowComments(true);
+        }else{
+            setShowComments(false);
+        }
+        
+    }
     return (
         <div>
 
@@ -27,12 +37,14 @@ export const Home = ({category}) => {
                 <i class="heart outline like icon"></i>
                 <p>{post.likeCount} likes</p>
                 </span>
-                <i class="comment icon"></i>
+                <i class="comment icon" onClick={CommentHandler}></i>
                 <p>{post.commentCount} answers</p>
-               { ((post.comments).map((comment) => (
+               {showComments && ((post.comments).map((comment) => (
                    <div>
                     <h3>{comment.username}</h3>
+                    <p>{comment.bio}</p>
                     <p>{comment.body}</p>
+                    <p>{ moment(comment.createdAt).fromNow()} </p>
                    </div>
                    
                 )))}

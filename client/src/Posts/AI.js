@@ -1,9 +1,14 @@
 import React from "react";
 import Posts from './Posts';
+import './Posts.css' ;
 
 const AI = () => {
     return (
-        <Posts category="AI"/>
+        <div className="ai-posts">
+            <h2 className="title">Artificial Intelligence</h2>
+            <Posts category="AI"/>
+        </div>
+        
     );
 }
  
