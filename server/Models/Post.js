@@ -2,12 +2,14 @@ const {model , Schema} = require('mongoose') ;
 const postSchema = new Schema({
     body: String,
     username : String,
+    bio: String,
     category : String,
     createdAt: String,
     comments : [
         {
             body: String,
             username: String,
+            bio: String,
             createdAt: String
         }
     ],

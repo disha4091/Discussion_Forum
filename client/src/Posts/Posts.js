@@ -2,29 +2,59 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks' ;
 import gql from 'graphql-tag' ;
 import './Posts.css' ;
-
+import moment from 'moment' ;
 export const Home = ({category}) => {
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
-
-   
     return (
         <div>
-            
+
         {loading ? (
             <h1>Loading Posts ... </h1> 
             ):(
             posts && posts.filter(post => post.category === category).map((post) => ( 
-                <div className="posts">
-                    <h2>{post.username}</h2>
-                    <h5>Category: {post.category}</h5>
-                    <p>Body: {post.body}</p>
-                    <p>Created At : {post.createdAt}</p>
+            <div className="Posts">
+            <div class="ui card">
+            <div class="content">
+                <div class="right floated meta">{moment(post.createdAt).fromNow()}</div>
+                 <p className="username">{post.username}</p>{post.bio}
+                 
+            </div>
+            <div className="body">
+               {post.body} 
+            </div>
+            <div class="content">
+                <span class="right floated">
+                <i class="heart outline like icon"></i>
+                <p>{post.likeCount} likes</p>
+                </span>
+                <i class="comment icon"></i>
+                <p>{post.commentCount} answers</p>
+               { ((post.comments).map((comment) => (
+                   <div>
+                    <h3>{comment.username}</h3>
+                    <p>{comment.body}</p>
+                   </div>
+                   
+                )))}
+            </div>
+           
+            <div>
+             </div>
+            <div class="extra content">
+                <div class="ui large transparent left icon input">
+                <i class="heart outline icon"></i>
+                <input type="text" placeholder="Add Answer..." />
                 </div>
+            </div>
+           </div>
+            </div>
+            
                 ))
-            )}
+            )} 
         </div>
     );
 }
+       
 
 const FETCH_POSTS_QUERY  = gql`
    { 
@@ -33,14 +63,16 @@ const FETCH_POSTS_QUERY  = gql`
         body 
         createdAt 
         username 
+        bio
         likeCount
         category
         likes{
             username
         }
+        likeCount
         commentCount
         comments{
-            id username createdAt body
+            id username bio createdAt body
         }
     }}
     ` ;
