@@ -9,7 +9,7 @@ const Cards = () => {
         <div class="ui grid container">
             <div className="heading">Explore Domains!</div>
             <br></br>
-            <div class="four wide column">
+            <div class="four wide column" style={{width:"100%"}}>
                 <div className="ML">
                 <div class="ui card">
                     <div class="content">
@@ -59,7 +59,7 @@ const Cards = () => {
                             </Link>
                             </div>
                         </div>
-                        </div>
+                </div>
             </div>
  
 </div>

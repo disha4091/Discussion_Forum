@@ -9,8 +9,8 @@ const Navbar = () => {
          Home
       </NavLink>
       
-      <div class="ui simple dropdown item">
-        Dropdown
+      <div className="ui simple dropdown item">
+        <p className="domain">Domains</p>
         <i class="dropdown icon"></i>
         <div class="menu">
             <Link to="/mlposts" class="item">Machine Learning</Link>

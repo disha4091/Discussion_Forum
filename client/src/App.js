@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from './HomePage/Homepage';
-import Posts from './Posts/Posts';
 import LoginForm from './Login/LoginForm';
 import NotFound from './NotFound/NotFound';
 import Signup from './Signup/Signup';
 import Navbar from './Navbar/Navbar';
-import Home from './Posts/Posts';
 import Webdev from './Posts/Webdev';
 import ML from './Posts/ML';
 import AI from './Posts/AI';
+import { Container } from 'semantic-ui-react'
 
 function App() {
 
@@ -17,6 +16,7 @@ function App() {
   
       
     <div className="App">
+    <Container>
     <Router>
     <Navbar />
     <Switch>
@@ -30,6 +30,8 @@ function App() {
    <Route component={NotFound} />
     </Switch>      
     </Router>
+    </Container>
+    
  
     </div>
       

@@ -19,7 +19,10 @@ export const Home = ({category}) => {
         <div>
 
         {loading ? (
-            <h1>Loading Posts ... </h1> 
+            <div class="ui segment">
+            <div class="ui active loader"></div>
+            <p></p>
+           </div>
             ):(
             posts && posts.filter(post => post.category === category).map((post) => ( 
             <div className="Posts">
@@ -40,11 +43,12 @@ export const Home = ({category}) => {
                 <i class="comment icon" onClick={CommentHandler}></i>
                 <p>{post.commentCount} answers</p>
                {showComments && ((post.comments).map((comment) => (
-                   <div>
-                    <h3>{comment.username}</h3>
-                    <p>{comment.bio}</p>
-                    <p>{comment.body}</p>
-                    <p>{ moment(comment.createdAt).fromNow()} </p>
+                   <div className="comments">
+                    <p>{comment.username}  ({comment.bio})</p>
+                    
+                    <p className="commentTime">{ moment(comment.createdAt).fromNow()} </p>
+                    <p className="commentBody">{comment.body}</p>
+                    
                    </div>
                    
                 )))}
@@ -55,7 +59,8 @@ export const Home = ({category}) => {
             <div class="extra content">
                 <div class="ui large transparent left icon input">
                 <i class="heart outline icon"></i>
-                <input type="text" placeholder="Add Answer..." />
+                <input className="AnsInput"type="text" placeholder="Add Answer..." />
+               
                 </div>
             </div>
            </div>
