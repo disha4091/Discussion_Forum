@@ -6,10 +6,10 @@ import './Cards.css' ;
 import { Link } from 'react-router-dom';
 const Cards = () => {
     return (
-        <div class="ui grid container">
-            <div className="heading">Explore Domains!</div>
+        <div class="features ui grid noMargin" >
+        <div class="ui huge header">Explore Domains</div>
             <br></br>
-            <div class="four wide column" style={{width:"100%"}}>
+            <div class="ui three stackable cards">
                 <div className="ML">
                 <div class="ui card">
                     <div class="content">
@@ -27,7 +27,7 @@ const Cards = () => {
                 </div>
                 </div>
             </div>
-            <div class="four wide column">
+            <div class="ui three stackable cards">
                 <div className="WebDevelopment">
                 <div class="ui card">
                     <div class="content">
@@ -44,7 +44,7 @@ const Cards = () => {
                 </div>
                 </div>
             </div>
-            <div class="four wide column">
+            <div class="ui three stackable cards">
                 <div className="AI">
                         <div class="ui card">
                             <div class="content">
