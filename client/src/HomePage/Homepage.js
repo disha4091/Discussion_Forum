@@ -16,13 +16,13 @@ const HomePage = () => {
                     <div className="Carousel">
                         <Carousel showArrows={false} showStatus={false} showThumbs={false} autoPlay={true} infiniteLoop={true} interval={3000}>
                             <div className="image">
-                                <img className="cimage" src={image1} />
+                                <img className="cimage" src={image1} alt='carouselimg1' />
                             </div>
                             <div className="image">
-                                <img className="cimage" src={image2} />
+                                <img className="cimage" src={image2} alt='carouselimg2' />
                             </div>
                             <div className="image">
-                                <img className="cimage" src={image3}/>
+                                <img className="cimage" src={image3} alt='carouselimg3'/>
                             </div>
                         </Carousel> 
                     </div>  

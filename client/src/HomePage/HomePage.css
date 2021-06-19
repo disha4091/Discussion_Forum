@@ -1,5 +1,6 @@
 .homepage{
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .image {
   width: 950px;
@@ -14,7 +15,6 @@
 
 .ui.inverted.vertical.masthead.center.aligned.segment.pusher-ele{
   background-color: #1c254b;
-  height: 95vh;
 }
 
 @media only screen and (max-width: 600px){
@@ -28,6 +28,6 @@
   }
   .ui.inverted.vertical.masthead.center.aligned.segment.pusher-ele{
     background-color: #1c254b;
-    height: 50vh;
+   
   }
 }

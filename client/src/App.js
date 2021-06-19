@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { AuthProvider } from './context/auth';
+import AuthRoute from './util/AuthRoute';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from './HomePage/Homepage';
 import LoginForm from './Login/LoginForm';
@@ -16,20 +18,22 @@ function App() {
   
       
     <div className="App">
-    <Container>
+      <Container>
+      <AuthProvider>
     <Router>
     <Navbar />
     <Switch>
     <Route exact path="/" component={Homepage} />
-    <Route path="/login" component={LoginForm} />
-    <Route path="/signup" component={Signup} />
+    <AuthRoute path="/login" component={LoginForm} />
+    <AuthRoute path="/signup" component={Signup} />
     <Route path="/webposts" component={Webdev} />
     <Route path="/mlposts" component={ML} />
     <Route path="/aiposts" component={AI} />
 
    <Route component={NotFound} />
     </Switch>      
-    </Router>
+          </Router>
+          </AuthProvider>
     </Container>
     
  

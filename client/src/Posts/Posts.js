@@ -8,7 +8,7 @@ export const Home = ({category}) => {
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
     const [showComments, setShowComments] = useState(false);
     function CommentHandler(){
-        if(showComments == false){
+        if(showComments === false){
             setShowComments(true);
         }else{
             setShowComments(false);
