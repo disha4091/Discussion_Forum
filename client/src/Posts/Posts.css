@@ -68,4 +68,9 @@
     background-color: #fdcf60;
     border-radius: 5px;
   }
+  .title {
+    color: #fdcf60;
+    font-size: 7vh;
+    font-family: "Cabin", sans-serif;
+  }
 }
