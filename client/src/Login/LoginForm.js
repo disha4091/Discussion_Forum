@@ -51,12 +51,14 @@ const LoginForm = (props) => {
             <Form.Input fluid icon='user' iconPosition='left' placeholder='Username'
             type="text"
           value={values.username}
+          name='username'
           error={errors.username ? true : false}
           onChange={onChange}/>
             <Form.Input
               fluid
               icon='lock'
               iconPosition='left'
+              name='password'
               placeholder='Password'
               type='password'
               value={values.password}

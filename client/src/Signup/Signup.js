@@ -138,25 +138,29 @@ const Signup = (props) => {
 const REGISTER_USER = gql`
   mutation register(
     $username: String!
-    $email: String!
     $password: String!
     $confirmPassword: String!
     $bio: String!
+    $email: String!
   ) {
     register(
       registerInput: {
         username: $username
         email: $email
         password: $password
-        confirmPassword: $confirmPassword
+        confirmPassword: $confirmPassword 
         bio: $bio
+
+        
+    
       }
     ) {
       id
       email
-      username
-      createdAt
       token
+      username
+      bio
+      createdAt
     }
   }
 `;
