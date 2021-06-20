@@ -39,10 +39,16 @@ const Navbar = () => {
       >
           {user.username}
         </NavLink>
+        <NavLink
+      to="/"
+      className="nav-link"
+      activeClassName="currentpage"
+      id={showlinks?"hidden" : ""}
+      onClick={logout}
+      >
+          Logout
+        </NavLink>
 
-        <button className="nav-link"
-        onClick={logout}>
-        Logout</button>
       </div>
     </div>
  ) : ( <div className="nav">

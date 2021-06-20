@@ -23,7 +23,10 @@
   color: aliceblue;
   background-color: #1c254b;
 }
-
+.logout {
+  font-size: 100px;
+  color: aliceblue;
+}
 .menuIcon {
   color: #1c254b;
   border-radius: 4px;
