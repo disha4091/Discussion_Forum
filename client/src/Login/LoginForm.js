@@ -94,6 +94,7 @@ mutation login($username: String!, $password: String!) {
     email
     username
     createdAt
+    bio
     token
   }
   

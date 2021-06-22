@@ -1,31 +1,39 @@
-import React,{ useState } from 'react'
+import React,{ useState,useContext } from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import './UpdateProfilePage.css' ;
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag' ;
 import { Message } from "semantic-ui-react";
-
+import { AuthContext } from "../context/auth";
 
 const UpdateProfilePage = () => {
+
+    const {user, logout} = useContext(AuthContext) ;
+    const [currBio, setCurrBio] = useState(user.bio) ;
     const [errors, setErrors] = useState({}) ;
     const [formError, setFormError] = useState(false) ;
     const [submitted, setSubmitted] = useState(false) ;
     const [values, setValues] = useState({username:'', newBio: ''}) ;
     const onChange = (event) => {
         setValues({...values, [event.target.name]: event.target.value}) ;
+        
     }
 
     const[updateBio, {loading}] = useMutation(UPDATEBIO,{
         update(_, result){
             console.log(result);
             setFormError(false) ;
+            setCurrBio(values.newBio) ;
         },
         onError(err){
             console.log(err.graphQLErrors[0].extensions.exception.errors);
             setErrors(err.graphQLErrors[0].extensions.exception.errors) ;
             setFormError(true) ;
         },
-        variables: values 
+        variables:{
+          username:user.username,
+          newBio: values.newBio
+        } 
     })
 
     const onSubmit = (event) => {
@@ -37,13 +45,16 @@ const UpdateProfilePage = () => {
 
     return (
        <div className="form">
+       <div className="Info">
+        <h1>Profile</h1>
+        <h2>{user.username}</h2>
+        <h4>{currBio}</h4>
+        <h4>{user.email}</h4>
+        
+       </div>
         <form class="ui form" noValidate classname={loading ? "loading" : ''}>
-            <div class="field">
-                <label className="label">Please confirm your username!</label>
-                <input type="text" name="username" placeholder="Username" 
-                value={values.username} onChange={onChange}
-                error = {(errors.username) ? true : false}/>
-            </div>
+        
+          
             <div class="field">
                 <label className="label">Update your bio here!</label>
                 <input type="text" name="newBio" placeholder="Write here!"
