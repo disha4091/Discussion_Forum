@@ -1,12 +1,21 @@
-import React from "react";
+import React,{useContext} from "react";
 import Posts from './Posts';
 import './Posts.css' ;
-
+import AddPost from '../AddPosts/PostForm' ;
+import {AuthContext} from '../context/auth' ;
 const Webdev = () => {
+    const {user} = useContext(AuthContext) ;
     return (
         <div className="web-posts">
-            <h2 className="title">Web Development<button className="AddQ">New Question</button></h2>
-            <Posts category= "WebDev" />
+        <h2 className="title">Web Development</h2>
+        {user && 
+            (<div>
+                <button className="AddQ">New Question</button>
+                <AddPost category={"WebDev"}/>
+            </div>
+            )
+        }
+        <Posts category="WebDev" />
         </div>
 
     );

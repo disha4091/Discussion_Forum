@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useQuery } from '@apollo/react-hooks' ;
 import gql from 'graphql-tag' ;
 import './Posts.css' ;
 import moment from 'moment' ;
 
 export const Home = ({category}) => {
+    
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
     const [showComments, setShowComments] = useState(false);
     function CommentHandler(){
@@ -17,7 +18,7 @@ export const Home = ({category}) => {
     }
     return (
         <div>
-
+        
         {loading ? (
             <div class="ui segment">
             <div class="ui active loader"></div>

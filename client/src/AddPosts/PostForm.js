@@ -1,20 +1,30 @@
-import { ValuesOfCorrectTypeRule } from 'graphql'
+
 import React from 'react'
 import { Button, Form } from 'semantic-ui-react'
 import { useForm } from '../util/hooks'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
-const PostForm = () => {
+import { FETCH_POSTS_QUERY } from '../util/graphql'
+const PostForm = ({category}) => {
 
-    const { values, onChange, onSubmit } = useForm(createPostCallback, {
-        body: ''
-    });
+    const { onChange, onSubmit, values  } = useForm(createPostCallback, {
+        body: '',
+        category: category
+      });
+    
+    
 
     const [createPost, { error }] = useMutation( CREATE_POST_MUTATION, {
         variables: values,
-        update(_, result){
+        update(proxy, result){
             console.log(result)
+            const data = proxy.readQuery({
+                query: FETCH_POSTS_QUERY
+            })
+            data.getPosts = [result.data.createPost, ...data.getPosts] ;
+            proxy.writeQuery({ query: FETCH_POSTS_QUERY, data }) ;
             values.body = ''
+            values.category = ''
         }
         
     })
@@ -24,15 +34,16 @@ const PostForm = () => {
     }
     return (
         <div className="post-form">
-            <Form onSubmit={} >
+            <Form onSubmit={onSubmit}>
                 <h2> Create a post: </h2> 
                 <Form.Field>
                     <Form.Input
                         placeholder="Study Clans"
                         name= "body"
                         onChange={onChange}
-                        value={Values.body}
+                        value={values.body}
                         />
+                        
                     <Button type="submit">
                         Submit    
                     </Button>      
@@ -44,8 +55,8 @@ const PostForm = () => {
 }
  
 const CREATE_POST_MUTATION = gql`
-mutation createPost($body: String!){
-    createPost(body: $body){
+mutation createPost($body: String!, $category:String!){
+    createPost(body: $body , category: $category){
         id body createdAt username
         bio
         likeCount
