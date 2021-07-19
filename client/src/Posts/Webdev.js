@@ -9,8 +9,7 @@ const Webdev = () => {
         <div className="web-posts">
         <h2 className="title">Web Development</h2>
         {user && 
-            (<div>
-                <button className="AddQ">New Question</button>
+            (<div>                
                 <AddPost category={"WebDev"}/>
             </div>
             )

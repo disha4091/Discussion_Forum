@@ -3,9 +3,12 @@ import { useQuery } from '@apollo/react-hooks' ;
 import gql from 'graphql-tag' ;
 import './Posts.css' ;
 import moment from 'moment' ;
+import { AuthContext  } from '../context/auth';
+import { Button, Icon } from 'semantic-ui-react';
 
 export const Home = ({category}) => {
     
+    const { user } = useContext(AuthContext);
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
     const [showComments, setShowComments] = useState(false);
     function CommentHandler(){
@@ -40,7 +43,13 @@ export const Home = ({category}) => {
                 <span class="right floated">
                 <i class="heart outline like icon"></i>
                 <p>{post.likeCount} likes</p>
+                { user && user.username === post.username && (
+                    <Button as="div">
+                        <Icon name="trash"/>
+                    </Button>
+                )}
                 </span>
+
                 <i class="comment icon" onClick={CommentHandler}></i>
                 <p>{post.commentCount} answers</p>
                {showComments && ((post.comments).map((comment) => (

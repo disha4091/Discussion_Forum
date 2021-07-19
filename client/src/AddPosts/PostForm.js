@@ -42,6 +42,7 @@ const PostForm = ({category}) => {
                         name= "body"
                         onChange={onChange}
                         value={values.body}
+                        error={error ? true : false }
                         />
                         
                     <Button type="submit">
@@ -49,7 +50,12 @@ const PostForm = ({category}) => {
                     </Button>      
                 </Form.Field>
             </Form>
-
+            {error && (<div className="ui error message">
+                <ul className="list">
+                    <li>{error.graphQLErrors[0].message}</li>
+                </ul>
+            </div>) }
+            
         </div>
     );
 }

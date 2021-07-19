@@ -9,11 +9,10 @@ const AI = () => {
         <div className="ai-posts">
         <h2 className="title">Artificial Intelligence</h2>
         {user && 
-            (<div>
-                <button className="AddQ">New Question</button>
+            <div>                
                 <AddPost category={"AI"}/>
             </div>
-            )
+            
         }
         <Posts category="AI" />
             

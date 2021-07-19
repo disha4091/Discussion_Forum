@@ -11,8 +11,7 @@ const ML = () => {
         <div className="ml-posts">
             <h2 className="title">Machine Learning</h2>
             {user && 
-                (<div>
-                    <button className="AddQ">New Question</button>
+                (<div>                    
                     <AddPost category={"ML"}/>
                 </div>
                 )
