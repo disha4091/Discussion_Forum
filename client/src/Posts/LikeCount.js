@@ -9,6 +9,7 @@ const LikeCount = ({user, post:{ id, likeCount, likes}}) => {
     const [liked, setLiked] = useState(false);
 
     useEffect(() => {
+      //
         if (user && likes.find((like) => like.username === user.username)) {
           setLiked(true);
         } else setLiked(false);
@@ -48,6 +49,7 @@ const LIKE_POST_MUTATION = gql`
     likePost(postId: $postId) {
       id
       likes {
+        id
         username
       }
       likeCount

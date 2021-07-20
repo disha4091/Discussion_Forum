@@ -42,7 +42,7 @@ export const Home = ({category}) => {
             </div>
             <div class="content">
                 <span class="right floated">
-                    <LikeCount user={ user } post={{post}}/>
+                    <LikeCount user={ user } post={post}/>
                 { user && user.username === post.username && (
                     <Button as="div">
                         <Icon name="trash"/>
@@ -94,6 +94,7 @@ const FETCH_POSTS_QUERY  = gql`
         likeCount
         category
         likes{
+            id
             username
         }
         likeCount
