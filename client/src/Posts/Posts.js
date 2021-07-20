@@ -5,6 +5,7 @@ import './Posts.css' ;
 import moment from 'moment' ;
 import { AuthContext  } from '../context/auth';
 import { Button, Icon } from 'semantic-ui-react';
+import LikeCount from './LikeCount';
 
 export const Home = ({category}) => {
     
@@ -41,8 +42,7 @@ export const Home = ({category}) => {
             </div>
             <div class="content">
                 <span class="right floated">
-                <i class="heart outline like icon"></i>
-                <p>{post.likeCount} likes</p>
+                    <LikeCount user={ user } post={{post}}/>
                 { user && user.username === post.username && (
                     <Button as="div">
                         <Icon name="trash"/>
