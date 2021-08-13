@@ -18,9 +18,9 @@ const Navbar = () => {
       <div class="ui simple dropdown item"  id={showlinks ? "hidden" : ""}>Domains
         <i class="dropdown icon"></i>
         <div class="menu">
-                <Link to="/mlposts" class="item"  onClick={()=>setShowLinks(!showlinks)}>Machine Learning</Link>
-                <Link to="/webposts" class="item"  onClick={()=>setShowLinks(!showlinks)}>Web Development</Link>          
-                <Link to="/aiposts" class="item"  onClick={()=>setShowLinks(!showlinks)}>Artificial Intelligence</Link>
+                <Link to="/ML" class="item"  onClick={()=>setShowLinks(!showlinks)}>Machine Learning</Link>
+                <Link to="/Webdev" class="item"  onClick={()=>setShowLinks(!showlinks)}>Web Development</Link>          
+                <Link to="/AI" class="item"  onClick={()=>setShowLinks(!showlinks)}>Artificial Intelligence</Link>
             </div>
       </div>
     </div>
@@ -64,9 +64,9 @@ const Navbar = () => {
       <div class="ui simple dropdown item"  id={showlinks ? "hidden" : ""}>Domains
         <i class="dropdown icon"></i>
         <div class="menu">
-                <Link to="/mlposts" class="item"  onClick={()=>setShowLinks(!showlinks)}>Machine Learning</Link>
-                <Link to="/webposts" class="item"  onClick={()=>setShowLinks(!showlinks)}>Web Development</Link>          
-                <Link to="/aiposts" class="item"  onClick={()=>setShowLinks(!showlinks)}>Artificial Intelligence</Link>
+                <Link to="/ML" class="item"  onClick={()=>setShowLinks(!showlinks)}>Machine Learning</Link>
+                <Link to="/Webdev" class="item"  onClick={()=>setShowLinks(!showlinks)}>Web Development</Link>          
+                <Link to="/AI" class="item"  onClick={()=>setShowLinks(!showlinks)}>Artificial Intelligence</Link>
             </div>
       </div>
     </div>

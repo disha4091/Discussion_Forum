@@ -1,15 +1,17 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useQuery } from '@apollo/react-hooks' ;
 import gql from 'graphql-tag' ;
 import './Posts.css' ;
+import { useHistory } from 'react-router-dom' ;
 import moment from 'moment' ;
 import { AuthContext  } from '../context/auth';
 import { Button, Icon } from 'semantic-ui-react';
 import LikeCount from './LikeCount';
-
+import  DeletePost  from '../DeletePost/DeletePost' ;
 export const Home = ({category}) => {
-    
+    const history = useHistory() ;
     const { user } = useContext(AuthContext);
+    const [userData , setUserData] = useState([])
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
     const [showComments, setShowComments] = useState(false);
     function CommentHandler(){
@@ -20,6 +22,15 @@ export const Home = ({category}) => {
         }
         
     }
+    const [toggle, setToggle] = useState(true);
+    useEffect(()=>{     
+        setUserData(posts);
+        console.log("reload");
+    });
+    function postCallback(){
+        setToggle(!toggle);
+        alert('Post Deleted') ;
+    }
     return (
         <div>
         
@@ -29,7 +40,7 @@ export const Home = ({category}) => {
             <p></p>
            </div>
             ):(
-            posts && posts.filter(post => post.category === category).map((post) => ( 
+            userData && userData.filter(post => post.category === category).map((post) => ( 
             <div className="Posts">
             <div class="ui card">
             <div class="content">
@@ -44,9 +55,7 @@ export const Home = ({category}) => {
                 <span class="right floated">
                     <LikeCount user={ user } post={post}/>
                 { user && user.username === post.username && (
-                    <Button as="div">
-                        <Icon name="trash"/>
-                    </Button>
+                    <DeletePost postId={post.id} callback={postCallback}/>
                 )}
                 </span>
 
@@ -104,4 +113,26 @@ const FETCH_POSTS_QUERY  = gql`
         }
     }}
     ` ;
+
+const DELETE_POSTS = gql `
+    mutation deletePost($postId: ID!) {
+        deletePost(postId: $postId)
+    }
+` ;
+
+const DELETE_COMMENT = gql `
+    mutation deleteComment($postId: ID!, $commentId: ID!) {
+        deleteComment(postId: $postId, commentId: $commentId){
+            id
+            comments
+            {
+                id
+                username
+                createdAt
+                body
+            }
+            commentCount
+        }
+    }
+`;
 export default Home ;

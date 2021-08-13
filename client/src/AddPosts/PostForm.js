@@ -34,6 +34,7 @@ const PostForm = ({category}) => {
     }
     return (
         <div className="post-form">
+        
             <Form onSubmit={onSubmit}>
                 <h2> Create a post: </h2> 
                 <Form.Field>

@@ -27,9 +27,9 @@ function App() {
     <Route exact path="/" component={Homepage} />
     <AuthRoute path="/login" component={LoginForm} />
     <AuthRoute path="/signup" component={Signup} />
-    <Route path="/webposts" component={Webdev} />
-    <Route path="/mlposts" component={ML} />
-    <Route path="/aiposts" component={AI} />
+    <Route path="/Webdev" component={Webdev} />
+    <Route path="/ML" component={ML} />
+    <Route path="/AI" component={AI} />
     <Route path="/updateBio" component={UpdateProfilePage} />
 
    <Route component={NotFound} />
