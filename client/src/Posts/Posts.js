@@ -76,10 +76,9 @@ export const Home = ({category}) => {
             <div>
              </div>
             <div class="extra content">
-                <div class="ui large transparent left icon input">
-                <i class="heart outline icon"></i>
-                <input className="AnsInput"type="text" placeholder="Add Answer..." />
-               
+                <div class="ui large transparent right icon input">
+                    <input className="AnsInput"type="text" placeholder="Add Answer..." /> 
+                    <button class="ui button" style={{marginLeft: "13.5vw"}}>Add</button>             
                 </div>
             </div>
            </div>
