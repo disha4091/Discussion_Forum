@@ -31,6 +31,7 @@ const PostForm = ({category}) => {
 
     function createPostCallback(){
         createPost();
+        window.location.reload();
     }
     return (
         <div className="post-form">

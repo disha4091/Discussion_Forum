@@ -20,23 +20,23 @@ function App() {
       
     <div className="App">
       <Container>
-      <AuthProvider>
-    <Router>
-    <Navbar />
-    <Switch>
-    <Route exact path="/" component={Homepage} />
-    <AuthRoute path="/login" component={LoginForm} />
-    <AuthRoute path="/signup" component={Signup} />
-    <Route path="/Webdev" component={Webdev} />
-    <Route path="/ML" component={ML} />
-    <Route path="/AI" component={AI} />
-    <Route path="/updateBio" component={UpdateProfilePage} />
+        <AuthProvider>
+          <Router>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Homepage} />
+              <AuthRoute path="/login" component={LoginForm} />
+              <AuthRoute path="/signup" component={Signup} />
+              <Route path="/Webdev" component={Webdev} />
+              <Route path="/ML" component={ML} />
+              <Route path="/AI" component={AI} />
+              <Route path="/updateBio" component={UpdateProfilePage} />
 
-   <Route component={NotFound} />
-    </Switch>      
+              <Route component={NotFound} />
+            </Switch>      
           </Router>
-          </AuthProvider>
-    </Container>
+        </AuthProvider>
+      </Container>
     
  
     </div>

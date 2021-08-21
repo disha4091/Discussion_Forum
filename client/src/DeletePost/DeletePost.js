@@ -26,8 +26,13 @@ function DeletePost({postId, commentId, callback}) {
             commentId
         }
     });
+
+    function deleteMutationCallBack(){
+        deleteMutation();
+        window.location.reload();
+    }
     return(
-        <Button as="div" onClick={deleteMutation}>
+        <Button as="div" onClick={deleteMutationCallBack}>
           <Icon name="trash"/>
         </Button>
         
