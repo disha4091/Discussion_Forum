@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useQuery } from '@apollo/react-hooks' ;
+import { useMutation, useQuery } from '@apollo/react-hooks' ;
 import gql from 'graphql-tag' ;
 import './Posts.css' ;
 import { useHistory } from 'react-router-dom' ;
@@ -8,13 +8,17 @@ import { AuthContext  } from '../context/auth';
 import { Button, Icon } from 'semantic-ui-react';
 import LikeCount from './LikeCount';
 import  DeletePost  from '../DeletePost/DeletePost' ;
+import AddAnswer from '../AddAnswer/AddAnswer';
 export const Home = ({category}) => {
     const history = useHistory() ;
     const { user } = useContext(AuthContext);
     const [userData , setUserData] = useState([])
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
     const [showComments, setShowComments] = useState(false);
-    function CommentHandler(){
+    const [showCommentId, setShowCommentId] = useState('');
+    
+
+    function CommentHandler(id){
         if(showComments === false){
             setShowComments(true);
         }else{
@@ -22,6 +26,9 @@ export const Home = ({category}) => {
         }
         
     }
+
+    
+
     const [toggle, setToggle] = useState(true);
     useEffect(()=>{     
         setUserData(posts);
@@ -31,6 +38,7 @@ export const Home = ({category}) => {
         setToggle(!toggle);
         alert('Post Deleted') ;
     }
+
     return (
         <div>
         
@@ -40,52 +48,47 @@ export const Home = ({category}) => {
             <p></p>
            </div>
             ):(
-            userData && userData.filter(post => post.category === category).map((post) => ( 
-            <div className="Posts">
-            <div class="ui card">
-            <div class="content">
-                <div class="right floated meta">{moment(post.createdAt).fromNow()}</div>
-                 <p className="username">{post.username}</p>{post.bio}
-                 
-            </div>
-            <div className="body">
-               {post.body} 
-            </div>
-            <div class="content">
-                <span class="right floated">
-                    <LikeCount user={ user } post={post}/>
-                { user && user.username === post.username && (
-                    <DeletePost postId={post.id} callback={postCallback}/>
-                )}
-                </span>
+                userData && userData.filter(post => post.category === category).map((post) => ( 
+                    <div className="Posts">
+                        <div class="ui card">
+                            <div class="content">
+                                <div class="right floated meta">{moment(post.createdAt).fromNow()}</div>
+                                <p className="username">{post.username}</p>{post.bio}
+                                
+                            </div>
+                            <div className="body">
+                            {post.body} 
+                            </div>
+                            <div class="content">
+                                <span class="right floated">
+                                    <LikeCount user={ user } post={post}/>
+                                    { user && user.username === post.username && (
+                                        <DeletePost postId={post.id} callback={postCallback}/>
+                                    )}
+                                </span>
 
-                <i class="comment icon" onClick={CommentHandler}></i>
-                <p>{post.commentCount} answers</p>
-               {showComments && ((post.comments).map((comment) => (
-                   <div className="comments">
-                    <p>{comment.username}  ({comment.bio})</p>
+                                <i class="comment icon" onClick={CommentHandler}></i>
+                                <p>{post.commentCount} answers</p>
+                                {showComments && ((post.comments).map((comment) => (
+                                    <div className="comments">
+                                        <p>{comment.username}  ({comment.bio})</p>
+                                        
+                                        <p className="commentTime">{ moment(comment.createdAt).fromNow()} </p>
+                                        <p className="commentBody">{comment.body}</p>
+                                        
+                                    </div>
+                                )))}
+                            </div>
+                        
+                            <div></div>
+                            {user && <AddAnswer post={post}/>}
+                        </div>
+                    </div>
                     
-                    <p className="commentTime">{ moment(comment.createdAt).fromNow()} </p>
-                    <p className="commentBody">{comment.body}</p>
-                    
-                   </div>
-                   
-                )))}
-            </div>
-           
-            <div>
-             </div>
-            <div class="extra content">
-                <div class="ui large transparent right icon input">
-                    <input className="AnsInput"type="text" placeholder="Add Answer..." /> 
-                    <button class="ui button" style={{marginLeft: "13.5vw"}}>Add</button>             
-                </div>
-            </div>
-           </div>
-            </div>
-            
-                ))
-            )} 
+                    )
+                )
+            )
+        } 
         </div>
     );
 }
