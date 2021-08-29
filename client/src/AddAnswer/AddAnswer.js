@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-
+import './AddAnswer.css';
 const AddAnswer = ({post: {id, comments, commentCount}}) => {
 
     const [comment, setComment] = useState('');
@@ -29,13 +29,13 @@ const AddAnswer = ({post: {id, comments, commentCount}}) => {
                 <input 
                 className="AnsInput"
                 type="text" 
+                style={{width: '40vw'}}
                 placeholder="Add Answer..." 
                 value={comment}
                 onChange={(event) => setComment(event.target.value)}
                 /> 
                 <button 
                 class="ui button" 
-                style={{marginLeft: "13.5vw"}}
                 disabled={comment.trim() === ''}
                 onClick= {SubmitCommentHandler}
                 >Add</button>             

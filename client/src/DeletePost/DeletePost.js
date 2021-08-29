@@ -20,6 +20,8 @@ function DeletePost({postId, commentId, callback}) {
                 if (callback) callback() ;
                 console.log("deleting");
             }
+
+              
            
         },
         variables: { 
@@ -51,6 +53,7 @@ const DELETE_COMMENT = gql `
     mutation deleteComment($postId: ID!, $commentId: ID!) {
         deleteComment(postId: $postId, commentId: $commentId){
             id
+            category
             comments
             {
                 id

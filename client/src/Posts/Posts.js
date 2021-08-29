@@ -15,16 +15,23 @@ export const Home = ({category}) => {
     const [userData , setUserData] = useState([])
     const { loading, data: { getPosts: posts } = {} } = useQuery(FETCH_POSTS_QUERY) ;
     const [showComments, setShowComments] = useState(false);
-    const [showCommentId, setShowCommentId] = useState('');
+    const [currPost, setCurrPost] = useState('');
+    const [currComment, setCurrComment] = useState([])
     
 
-    function CommentHandler(id){
-        if(showComments === false){
+    function CommentHandler(post){
+            if(showComments === false){
+            setCurrPost(post.id) ;
+            (userData.filter(newpost => newpost.id === post.id).map((newpost)=>(
+               setCurrComment([...newpost.comments])
+            ))) ;
             setShowComments(true);
         }else{
             setShowComments(false);
+            setCurrComment([]) ;
         }
-        
+
+        console.log(currPost);
     }
 
     
@@ -33,7 +40,7 @@ export const Home = ({category}) => {
     useEffect(()=>{     
         setUserData(posts);
         console.log("reload");
-    });
+    },[posts]);
     function postCallback(){
         setToggle(!toggle);
         alert('Post Deleted') ;
@@ -67,14 +74,18 @@ export const Home = ({category}) => {
                                     )}
                                 </span>
 
-                                <i class="comment icon" onClick={CommentHandler}></i>
+                                <i class="comment icon" onClick={() => CommentHandler(post) }></i>
                                 <p>{post.commentCount} answers</p>
-                                {showComments && ((post.comments).map((comment) => (
+                                
+                                {showComments && (currPost === post.id) && (currComment.map((comment) => (
                                     <div className="comments">
-                                        <p>{comment.username}  ({comment.bio})</p>
+                                        <p>{comment.username}  ({comment.bio}) <p className="commentTime">{ moment(comment.createdAt).fromNow()} </p></p>
                                         
-                                        <p className="commentTime">{ moment(comment.createdAt).fromNow()} </p>
+                                        
                                         <p className="commentBody">{comment.body}</p>
+                                        { user && user.username === comment.username && (
+                                            <DeletePost postId={currPost} commentId={comment.id} callback={postCallback}/>
+                                        )}
                                         
                                     </div>
                                 )))}
