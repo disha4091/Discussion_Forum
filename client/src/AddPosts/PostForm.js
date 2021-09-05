@@ -1,11 +1,15 @@
 
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Header, Image, Modal , Form, FormGroup} from 'semantic-ui-react'
 import { useForm } from '../util/hooks'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 import { FETCH_POSTS_QUERY } from '../util/graphql'
+import './PostForm.css' ;
+
+
 const PostForm = ({category}) => {
+    const [open, setOpen] = React.useState(false)
 
     const { onChange, onSubmit, values  } = useForm(createPostCallback, {
         body: '',
@@ -35,28 +39,39 @@ const PostForm = ({category}) => {
     }
     return (
         <div className="post-form">
+        <Modal
+        onClose={() => setOpen(false)}
+        onOpen={() => setOpen(true)}
+        open={open}
+        trigger={<Button>New question</Button>}
+      >
+        <Modal.Header>Add a new question</Modal.Header>
+        <Modal.Content image>
+          
+          <Modal.Description>
+         
+          <textarea className="inputbox"
+              name= "body"
+              onChange={onChange}
+              value={values.body}
+              error={error ? true : false }
+              />    
+              {error && (<div className="ui error message">
+              <ul className="list">
+                  <li>{error.graphQLErrors[0].message}</li>
+              </ul>
+          </div>) }
+          </Modal.Description>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button color='blue' onClick={() => setOpen(false)} onClick={onSubmit}>
+            Add
+          </Button>
+         
+        </Modal.Actions>
+      </Modal>
         
-            <Form onSubmit={onSubmit}>
-                <h2> Create a post: </h2> 
-                <Form.Field>
-                    <Form.Input
-                        placeholder="Study Clans"
-                        name= "body"
-                        onChange={onChange}
-                        value={values.body}
-                        error={error ? true : false }
-                        />
-                        
-                    <Button type="submit">
-                        Submit    
-                    </Button>      
-                </Form.Field>
-            </Form>
-            {error && (<div className="ui error message">
-                <ul className="list">
-                    <li>{error.graphQLErrors[0].message}</li>
-                </ul>
-            </div>) }
+
             
         </div>
     );
@@ -82,3 +97,8 @@ mutation createPost($body: String!, $category:String!){
 `
 
 export default PostForm;
+
+
+
+
+

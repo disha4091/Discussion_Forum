@@ -17,7 +17,7 @@ export const Home = ({category}) => {
     const [showComments, setShowComments] = useState(false);
     const [currPost, setCurrPost] = useState('');
     const [currComment, setCurrComment] = useState([])
-    
+    const [searchItem, setSearchItem] = useState('') ;
 
     function CommentHandler(post){
             if(showComments === false){
@@ -48,14 +48,20 @@ export const Home = ({category}) => {
 
     return (
         <div>
-        
+        <input type="text" class="input" placeholder="Search" onChange={event => {setSearchItem(event.target.value)}}></input>
         {loading ? (
             <div class="ui segment">
             <div class="ui active loader"></div>
             <p></p>
            </div>
             ):(
-                userData && userData.filter(post => post.category === category).map((post) => ( 
+                userData && userData.filter(post => post.category === category).filter((val)=>{
+                    if(searchItem == "") return val ;
+                    else if(val.body.toLowerCase().includes(searchItem.toLowerCase())){
+                        return val;
+                    }
+                }).map((post) => ( 
+
                     <div className="Posts">
                         <div class="ui card">
                             <div class="content">
