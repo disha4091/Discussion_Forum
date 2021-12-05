@@ -48,7 +48,7 @@ export const Home = ({category}) => {
 
     return (
         <div>
-        <input type="text" class="input" placeholder="Search" onChange={event => {setSearchItem(event.target.value)}}></input>
+        <div className="searchbox"><input type="text" class="input" placeholder="Search" onChange={event => {setSearchItem(event.target.value)}}></input></div>
         {loading ? (
             <div class="ui segment">
             <div class="ui active loader"></div>

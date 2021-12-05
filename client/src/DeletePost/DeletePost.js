@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks' ;
 import gql from 'graphql-tag' ;
+import '../Posts/Posts.css'
 import { Button, Icon } from 'semantic-ui-react';
 
 import { FETCH_POSTS_QUERY } from '../util/graphql';
@@ -35,7 +36,7 @@ function DeletePost({postId, commentId, callback}) {
         window.location.reload();
     }
     return(
-        <Button as="div" onClick={deleteMutationCallBack}>
+        <Button className="deletebtn" as="div" onClick={deleteMutationCallBack}>
           <Icon name="trash"/>
         </Button>
         

@@ -10,12 +10,14 @@ const ML = () => {
         
         <div className="ml-posts">
             <h2 className="title">Machine Learning</h2>
+            <div classname="addbtn">
             {user && 
                 (<div>                    
                     <AddPost category={"ML"}/>
                 </div>
                 )
             }
+            </div>
             <Posts category="ML" />
         </div>
         
