@@ -19,7 +19,7 @@ const Cards = () => {
                     <img src={ML} className="CardImg"/>
 
                     <div class="extra content">
-                        <Link to="/mlposts">
+                        <Link to="/ml">
                             <button class="ui button">Explore</button>
                         </Link>
                         
@@ -37,7 +37,7 @@ const Cards = () => {
                     <img src={WebDevelopment} className="CardImg"/>
 
                     <div class="extra content">
-                    <Link to="/webposts">
+                    <Link to="/webdev">
                             <button class="ui button">Explore</button>
                     </Link>
                     </div>
@@ -54,7 +54,7 @@ const Cards = () => {
                             <img src={AI} className="CardImg"/>
                     
                             <div class="extra content">
-                            <Link to="/aiposts">
+                            <Link to="/ai">
                             <button class="ui button">Explore</button>
                             </Link>
                             </div>

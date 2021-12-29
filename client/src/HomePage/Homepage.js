@@ -1,6 +1,7 @@
 import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import { Carousel } from 'react-responsive-carousel';
+import Footer from '../Footer/Footer'; 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './HomePage.css'
 import image1 from './Images/img1.PNG'
@@ -32,6 +33,7 @@ const HomePage = () => {
 
             </div>
                 <Cards/>
+                <Footer/>
         </div>
        
 )  

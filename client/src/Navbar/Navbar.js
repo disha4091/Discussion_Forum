@@ -39,6 +39,7 @@ const Navbar = () => {
       >
           {user.username}
         </NavLink>
+        
         <NavLink
       to="/"
       className="nav-link"
@@ -85,6 +86,7 @@ const Navbar = () => {
       >
           Login
         </NavLink>
+        
         <NavLink
           to="/signup"
           className="nav-link"

@@ -33,7 +33,8 @@ function DeletePost({postId, commentId, callback}) {
 
     function deleteMutationCallBack(){
         deleteMutation();
-        window.location.reload();
+        console.log("callback");
+        window.location.reload(false);
     }
     return(
         <Button className="deletebtn" as="div" onClick={deleteMutationCallBack}>

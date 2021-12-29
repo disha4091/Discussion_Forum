@@ -1,4 +1,4 @@
-.homepage{
+.homepage {
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -13,21 +13,20 @@
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
-.ui.inverted.vertical.masthead.center.aligned.segment.pusher-ele{
+.ui.inverted.vertical.masthead.center.aligned.segment.pusher-ele {
   background-color: #1c254b;
 }
 
-@media only screen and (max-width: 600px){
-  .Carousel{
+@media only screen and (max-width: 600px) {
+  .Carousel {
     width: 300px;
     height: 100px;
   }
-  .image{
-    width:300px;
+  .image {
+    width: 300px;
     height: 175px;
   }
-  .ui.inverted.vertical.masthead.center.aligned.segment.pusher-ele{
+  .ui.inverted.vertical.masthead.center.aligned.segment.pusher-ele {
     background-color: #1c254b;
-   
   }
 }

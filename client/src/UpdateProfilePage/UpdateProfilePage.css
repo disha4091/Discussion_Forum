@@ -13,3 +13,21 @@
   color: aliceblue;
   font-size: 40px;
 }
+
+.infoCard {
+  background-color: white;
+  margin: 5% !important;
+  color: black !important;
+  padding: 3% !important;
+  border-radius: 6px;
+}
+
+.profileImg {
+  width: 100%;
+}
+
+.profileInfo {
+}
+.updateBtn {
+  margin-left: 10% !important;
+}
